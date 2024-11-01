@@ -5,23 +5,23 @@ from bs4 import BeautifulSoup
 def check_prestashop(url):
     try:
         response = requests.get(url, timeout=10)
-        response.raise_for_status()  # Vérifie si la requête a réussi
+        response.raise_for_status()
     except requests.RequestException as e:
         print(f"Erreur pour {url}: {e}")
         return False
 
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Vérifie la présence de balises ou scripts typiques de PrestaShop
+    # Checks the presence of typical PrestaShop tags or scripts
     if soup.find('meta', {'name': 'generator', 'content': 'PrestaShop'}):
         return True
-    if "prestashop" in response.text.lower():  # Vérifie les mentions du mot "prestashop" dans le texte
+    if "prestashop" in response.text.lower():
         return True
 
     return False
 
 def main():
-    # Liste des sites à tester
+    # List of sites to test
     sites = [
         "https://www.insectosphere.fr",
         "https://printlabs.bureau-vallee.fr",
