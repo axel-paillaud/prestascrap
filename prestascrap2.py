@@ -47,8 +47,8 @@ def find_french_links(url, visited):
 def main():
     # Starting list of sites to explore
     start_urls = [
-        "https://www.pagesjaunes.fr",
-        "https://www.lafourchette.com",
+        "https://www.pagesjaunes.fr/",
+        "https://www.lafourchette.com/",
     ]
 
     visited = set()
